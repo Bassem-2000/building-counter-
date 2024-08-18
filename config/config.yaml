@@ -1,0 +1,38 @@
+output_dir: "./output/"
+models:
+  - model_name: "flkennedy"
+    model_path: "./models/flkennedy.pt"
+    model_type: "yolov8"
+    confidence_threshold: 0.3
+    device: "cuda:0"
+  - model_name: "Bruno64"
+    model_path: "./models/Bruno64.pt"
+    model_type: "yolov8"
+    confidence_threshold: 0.3
+    device: "cuda:0"
+  - model_name: "keremberke-n"
+    model_path: "./models/keremberke-n.pt"
+    model_type: "yolov8"
+    confidence_threshold: 0.3
+    device: "cuda:0"
+  - model_name: "keremberke-s"
+    model_path: "./models/keremberke-s.pt"
+    model_type: "yolov8"
+    confidence_threshold: 0.3
+    device: "cuda:0"
+  - model_name: "keremberke-m"
+    model_path: "./models/keremberke-m.pt"
+    model_type: "yolov8"
+    confidence_threshold: 0.3
+    device: "cuda:0"
+  - model_name: "odil111"
+    model_path: "./models/odil111.pt"
+    model_type: "yolov8"
+    confidence_threshold: 0.3
+    device: "cuda:0"
+
+slice_height: 400
+slice_width: 400
+overlap_height_ratio: 0.3
+overlap_width_ratio: 0.3
+postprocess_class_agnostic: true
