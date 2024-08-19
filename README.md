@@ -1,4 +1,4 @@
-results here https://drive.google.com/drive/folders/1B8mT2A4hc0FFTJkXq65FMWNiyOZepuZX?usp=sharing
+results ![here](https://drive.google.com/drive/folders/1B8mT2A4hc0FFTJkXq65FMWNiyOZepuZX?usp=sharing)
 # Building Count from Drone Image
 
 ## Objective
@@ -100,5 +100,5 @@ An annotated image with bounding boxes around the detected buildings is displaye
 ## Output Image Example
 
 <div align="center">
-    <img src="https://github.com/Bassem-2000/building-counter-/blob/main/images/output.png?raw=true">
+    <img src="https://github.com/Bassem-2000/building-counter-/blob/main/images/output.png">
   </div>
