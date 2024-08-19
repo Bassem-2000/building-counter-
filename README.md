@@ -1,45 +1,104 @@
 results here https://drive.google.com/drive/folders/1B8mT2A4hc0FFTJkXq65FMWNiyOZepuZX?usp=sharing
-# Project Title: Building Count from Drone Image
+# Building Count from Drone Image
 
-## Objective: Detect and count buildings in a provided drone image using a pre-trained YOLOv8 object detection model, returning the total count and an annotated image.
+## Objective
+The objective of this project is to detect and count the number of buildings in a provided drone image. The pipeline uses a pre-trained object detection model (YOLOv8) to identify buildings, annotate the image with bounding boxes, and return the total count of detected buildings.
 
-## Requirements: Python 3.x, OpenCV, Matplotlib, YOLOv8 Detection Library (e.g., from Ultralytics or another implementation), Pre-trained YOLOv8 Model (flkennedy.pt), GPU (Optional but recommended for faster inference).
 
-## Installation:
+GPU support (Optional but recommended for faster inference)
 
-Clone the repo: git clone https://github.com/yourusername/building-detection-pipeline.git && cd building-detection-pipeline
-Install dependencies: pip install opencv-python-headless matplotlib yolov8-detection-library
-Model Setup: Download the pre-trained YOLOv8 model (flkennedy.pt) and place it in the models/ directory.
-Input Image: Place your drone image in the project directory or specify its path in the script.
-## Project Structure:
+## Installation
+- Clone the Repository:
+    ```bash
+    git clone https://github.com/yourusername/building-detection-pipeline.git
+    ```
+    ```bash
+    cd building-detection-pipeline
+    ```
 
-README.md: Documentation.
-building_count.py: Main script for building detection and counting.
-models/flkennedy.pt: Pre-trained YOLOv8 model.
-output/annotated_image.jpg: Generated output image with bounding boxes.
-## Usage:
-Run the script: python building_count.py.
-The model will:
+- Create env and activate it:
 
-Load the drone image and the YOLOv8 model.
-Perform detection and count the buildings.
-Display and save the annotated image in the output/ folder.
-## Parameters:
+    ```bash
+    python -m venv .venv
+    ```
+    Activate on linux system
 
-image_path: Path to the drone image (e.g., drone_image.jpg).
-model_path: Path to the pre-trained YOLOv8 model (e.g., models/flkennedy.pt).
-## Example Output:
+    ```bash
+    source .venv/bin/activate  
+    ```
+    Activate on Windows System 
+    ```bash
+    source .venv\Scripts\activate  
+    ```
 
-Output Image: Annotated with bounding boxes around detected buildings, saved as annotated_image.jpg.
-Console Output: Number of buildings detected: 15
-## Code Overview:
 
-load_image(): Loads and preprocesses the input image.
-load_detection_model(): Loads the YOLOv8 model with specified parameters.
-draw_predictions_on_image(): Annotates the image with bounding boxes and masks.
-display_image_popup(): Displays the annotated image in a pop-up window.
-process_image(): Handles the full pipeline from loading, detecting, to saving the annotated image.
-## Notes:
+- Install Dependencies:
+    
+    Install the necessary dependencies using pip:
 
-Ensure the model weights (flkennedy.pt) are placed in the models/ directory.
-Make sure the image path is correctly specified in the code.
+    ```bash
+    pip install -r requirements.txt
+    ```
+- Model Setup:
+
+    Download the pre-trained models by runing this command.
+
+    ```bash
+    bash models/download_models.sh
+    ```
+
+
+## Project Structure
+
+    ```
+    .
+    ├── config/
+    │   └── config.yaml       # A yaml file contains the configs 
+    ├── models/
+    │   └── flkennedy.pt       # Pre-trained YOLOv8 model
+    ├── output/
+    │   └── annotated_image.jpg # Output image with bounding boxes (generated after running the script)
+    ├── utils/
+    │   └── config.py 
+    │   └── image.py 
+    │   └── model.py 
+    ├── README.md
+    ├── documentatio.pdf      # a documentation for this project
+    ├── inference.py      # Main script to detect and count buildings
+    └── requirements.txt       # List of dependencies
+    ```
+
+
+## Quick Start:
+
+Place the drone image you want and run this command with the path of your image.
+
+    ```bash
+    inference.py --footprint <image.png>
+    ```
+## Expected Output:
+
+The total count of detected buildings is printed in the console and also on the output image.
+An annotated image with bounding boxes around the detected buildings is displayed in pop-up windows and saved to the output/ directory as annotated_image.jpg.
+
+- Example
+    Input: 
+    
+    A drone image provided as input (e.g., drone_image.jpg).
+- Output:
+
+    Annotated image with bounding boxes around detected buildings. Building count displayed in the console and a text with building count at the top left of the image.
+
+## Code Explanation:
+
+- load_image(): This function loads and preprocesses the input image for model inference.
+- load_detection_model(): Loads the pre-trained YOLOv8 model with specified parameters such as confidence threshold and device (GPU or CPU).
+- draw_predictions_on_image(): Draws bounding boxes and masks on the image for detected buildings.
+- display_image_popup(): Displays the annotated image in a pop-up window using OpenCV.
+- process_image(): The main function that handles the entire pipeline: image loading, model inference, post-processing, and output generation.
+
+## Output Image Example
+
+<div align="center">
+    <img src="https://github.com/Bassem-2000/building-counter-/blob/main/images/output.png?raw=true">
+  </div>
